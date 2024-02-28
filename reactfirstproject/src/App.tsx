@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {Counter} from './components/Counter'
+import Navbar from './components/Navbar'
+import SearchForm from './components/SearchForm';
+import { Routes, Route } from 'react-router-dom';
+import GenreSelect  from './components/GenreSelect';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Navbar title='React App'/>
       </div>
-      <h1>Vite + React + Tanu</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+          <Route path="/" element={<Counter message='The count value is' />} />
+          <Route path="/SearchForm" element={<SearchForm />} />
+          <Route path="/GenreSelect" element={<GenreSelect />} />
+       </Routes>
+   
+      {/* <Counter message='The count value is' ></Counter>
+      <SearchForm></SearchForm>
+      <GenreSelect></GenreSelect> */}
     </>
   )
 }
 
-export default App
+export default App;
